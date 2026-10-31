@@ -1,6 +1,10 @@
 # Research workflow
 
-This document summarizes the work performed for the partial reproduction of the PDFBox case study in *Production Monitoring to Improve Test Suites*.
+This document describes the steps I have taken so far for the partial reproduction of the PDFBox case study in *Production Monitoring to Improve Test Suites*.
+
+I come to this work from an industry software engineering background, with more than ten years of experience in software development and maintenance. I wanted to understand the research process in practice: preparing the environment, tracing how the tools produce their results, checking unexpected differences, and being careful about what the available evidence can actually support.
+
+The workflow below is a record of the investigation so far, not a claim that every stage of the original study has been reproduced.
 
 ## End-to-end process
 
@@ -28,15 +32,15 @@ flowchart TD
 
 ## 2. Historical artifacts and scope
 
-Historical extraction and matching artifacts were inspected as references. The controlled extraction targeted PDFBox main source code under `pdfbox/src/main/java`.
+I first inspected the historical extraction and matching artifacts available in the project. I then ran a controlled extraction targeting PDFBox main source code under `pdfbox/src/main/java`.
 
-The historical and controlled extraction runs do not have a confirmed identical source scope. Consequently, differences in row counts must not be attributed to the signature correction alone.
+The historical and controlled extraction runs do not have a confirmed identical source scope. For that reason, I do not treat differences in row counts as an effect of the signature correction alone.
 
-## 3. Code changes examined
+## 3. Code changes I investigated
 
 ### Array parameter descriptors
 
-The original logic represented any array parameter with a single `[`. The experimental implementation counts array dimensions and emits the corresponding number of brackets.
+While checking method signatures, I found that the original logic represented any array parameter with a single `[`, even when the parameter had more than one dimension. I changed the experimental implementation to preserve the number of dimensions.
 
 Examples:
 - `float[]` → `[F`
@@ -45,7 +49,7 @@ Examples:
 
 ### Selector null guard
 
-The experimental `MockableSelector` handles a missing declaring-type reference by returning `false` rather than dereferencing null. This is a separate behavioral change and may affect mockability classification.
+I also investigated a separate issue in `MockableSelector`. The experimental version handles a missing declaring-type reference by returning `false` instead of dereferencing null. I keep this change separate in my analysis because it may affect mockability classification independently of method signatures.
 
 ## 4. Controlled extraction
 
@@ -64,25 +68,27 @@ The two additional matched methods were:
 - `PDAnnotationMarkup.setInkList`
 - `ByteTrie.addPath`
 
-Because the experimental run included both code changes, the current evidence does not isolate the contribution of each change.
+Both experimental code changes were present in that run. I therefore cannot yet say how much each change contributed to the result.
 
 ## 6. Downstream artifacts
 
-Existing PDFBox README figures and `execution/system-test-report.csv` contain different summaries. The CSV totals align with the paper's system-test results, but this does not prove that the current investigation regenerated those results. They are therefore treated as historical artifacts.
+I also reviewed the existing PDFBox README figures and `execution/system-test-report.csv`. They contain different summaries. The CSV totals align with the paper's system-test results, but I have not independently regenerated those results as part of this investigation. I therefore refer to them as historical artifacts.
 
-## 7. Reporting discipline
+## 7. How I report the evidence
 
-Each claim should be classified as:
+I try to distinguish three types of statements in my notes:
 - **Observed:** directly supported by a measured result or inspected artifact.
-- **Interpretation:** a reasonable explanation of observations.
-- **Unresolved:** a hypothesis that needs a controlled experiment.
+- **Interpretation:** a possible explanation of an observation.
+- **Unresolved:** a question that still needs a controlled experiment.
+
+This distinction is important to me because I want the report to show not only what appears to work, but also what I have not established yet.
 
 ## 8. Next experiment
 
-Run a four-way ablation under identical source scope and inputs:
+My next step is a four-way ablation under identical source scope and inputs:
 1. baseline (no array fix, no guard);
 2. array-signature fix only;
 3. null guard only;
 4. both changes.
 
-Record source revision, command, source scope, extracted methods, eligible methods, matched and unmatched methods, duplicate matches, and match rate for every configuration.
+For every configuration, I plan to record the source revision, command, source scope, extracted methods, eligible methods, matched and unmatched methods, duplicate matches, and match rate.
