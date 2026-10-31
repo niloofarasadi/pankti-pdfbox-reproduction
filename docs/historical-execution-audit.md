@@ -93,3 +93,25 @@ These differences are unresolved. In particular, the matching generated/unique-p
 The public PANKTI documentation establishes where object profiles and generated test source files come from. The public experiment repository establishes that the summary CSVs are historical artifacts committed alongside the scripts. However, no inspected public script or notebook has yet been identified as the code that creates `execution/report.csv` or `execution/system-test-report.csv`.
 
 The precise producer, generation command, and reason for the differing test totals remain unresolved. Further progress requires tracing the historical post-processing/Descartes assessment step or obtaining the original experimenter's clarification. This audit did not execute or modify any historical experiment.
+
+
+## 7. Descartes assessment pipeline traced in the upstream PANKTI source
+
+A read-only inspection of the upstream `ASSERT-KTH/pankti` repository identified two relevant scripts:
+
+- `pankti-extract/find-pseudo-tested.py` reads the method-extraction CSV and one or more Descartes `methods.json` files. It matches methods by fully qualified class name, method name, and parameter signature, selects methods classified as `not-covered` or `pseudo-tested`, and writes an `instrumentation-candidates-<project>.csv` file.
+- `pankti-generate/diff-descartes-report.py` reads `invoked-methods.csv` plus Descartes `methods.json` report(s), maps classifications by class and method name, and writes an output CSV (default `invoked-methods-result.csv`) with an added `classification-after` column. It also prints aggregate before/after classification counts.
+
+These scripts establish the Descartes assessment and candidate-selection mechanisms. Neither writes the PDFBox experiment's `execution/report.csv` schema, which includes per-method invocation/profile/test counts and a `descartes-classification` column. Thus, the upstream source narrows the provenance trail but does not identify the direct producer of that summary report.
+
+## 8. Further evidence of multiple report snapshots
+
+The public `pdfbox/data/report-file-sizes.csv` is documented by `pdfbox/data/find-file-sizes.py` as a derivative of `execution/report.csv`: the script reads the execution report, adds average on-disk object-profile size, and writes the size report. Yet its TOTAL row reports 57,567 collected profiles, 13,856 unique profiles, 1,855 generated tests, 1,613 passing, and 242 failing. These do not match the currently committed `execution/report.csv` TOTAL row (57,563; 13,851; 2,238 executed; 2,001 passing; 237 failing).
+
+The size-report rows also differ for individual methods (for example, `COSParser.getEncryption` has 35 collected profiles and 22 failing tests there, versus 33 collected profiles and 20 failing tests in `execution/report.csv`). Therefore, the size report is not a faithful size-only augmentation of the currently committed CSV contents; it reflects a different data snapshot or subsequent edits. The available files do not establish exactly when or why these values diverged.
+
+The PDFBox README provides another summary: 13,804 generated test cases, 1,840 executed, 1,597 passing, and 243 failing. Its method-assessment split (17 pseudo-tested to tested, 11 pseudo-tested to partially-tested, 18 remaining pseudo-tested) agrees with the paper's aggregate 28 improved / 18 remaining classification split, but its test counts differ from both CSV snapshots.
+
+### Updated conclusion
+
+There are at least three distinct PDFBox result snapshots in the public experiment repository: the README summary, `execution/report.csv`, and `data/report-file-sizes.csv`. Their test totals are not interchangeable. The upstream Descartes scripts explain how method classifications and instrumentation candidates are derived, but no inspected script or notebook has been identified as the direct producer of the committed per-method `execution/report.csv`. Treat the exact report-generation provenance as unresolved unless original intermediate files, commands, or author clarification become available.
