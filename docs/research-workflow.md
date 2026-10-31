@@ -83,9 +83,11 @@ I try to distinguish three types of statements in my notes:
 
 This distinction is important to me because I want the report to show not only what appears to work, but also what I have not established yet.
 
-## 8. Next experiment
+## 8. Remaining work and optional diagnostic experiment
 
-My next step is a four-way ablation under identical source scope and inputs:
+The main remaining work is to reproduce the Section IV.C PDFBox production-workload experiment end to end: confirm the target-method set and workload, collect production object profiles, generate differential tests, execute them, and assess whether target methods become well-tested. The paper's reference results are 121,175 target-method invocations, 57,563 collected object profiles, 13,851 generated tests, 13,614 passing tests, 237 failing tests, and 28 of 46 effective target methods upgraded.
+
+A four-way ablation under identical source scope and inputs is an optional diagnostic extension, not an explicit requirement in the assignment:
 1. baseline (no array fix, no guard);
 2. array-signature fix only;
 3. null guard only;
