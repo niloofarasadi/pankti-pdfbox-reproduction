@@ -66,7 +66,13 @@ The match count increased by two and the match rate increased by approximately 0
 
 **My current interpretation:** The improvement is small, but it suggests that the descriptor issue may affect at least some matches. I am not treating this as a final causal conclusion because both experimental changes were present in the run.
 
-## 5. Historical downstream reports
+## 5. Paper reference results and historical downstream reports
+
+### 5.1 Section IV.C: PDFBox production workload
+
+The assigned Case Study 2 is the production-workload experiment. The paper reports 121,175 target-method invocations and 57,563 collected production object profiles. From these, PANKTI generated 13,851 differential tests, of which 13,614 passed and 237 failed. The test quality improved for 28 of the 46 effective target methods. These are the primary reference values for the requested reproduction. The current extraction and matching investigation has not regenerated this complete pipeline.
+
+### 5.2 Section IV.E, Table IV: separate system-test experiment
 
 The repository's `pdfbox/README.md` and `pdfbox/execution/system-test-report.csv` contain different summaries.
 
