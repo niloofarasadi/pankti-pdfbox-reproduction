@@ -1,107 +1,99 @@
-# Reproducing the PANKTI PDFBox Case Study: Method Signatures and Matching
+# PANKTI PDFBox Case Study Reproduction Report
 
-**Author:** Niloofar Asadi\
-**Research area:** Software engineering, software testing, and
-AI-assisted software engineering\
-**Subject system:** Apache PDFBox 2.0.21\
-**Reference paper:** Deepika Tiwari, Long Zhang, Martin Monperrus, and
-Benoit Baudry, *Production Monitoring to Improve Test Suites*, Section
-IV.C and Table IV. https://arxiv.org/pdf/2012.01198\
-**Code and artifacts:** PANKTI repository and the PDFBox experiment
-artifacts described below
+**Author:** Niloofar Asadi  
+**Subject system:** Apache PDFBox 2.0.21  
+**Assigned study:** Case Study 2 — production workload (Section IV.C)  
+**Reference:** Tiwari, D., Zhang, L., Monperrus, M., and Baudry, B., *Production Monitoring to Improve Test Suites*, arXiv:2012.01198v4 (2021).  
+**Reproduction repository:** https://github.com/niloofarasadi/pankti-pdfbox-reproduction
 
-## 1. Motivation and research question
+## 1. Executive summary
 
-As part of my attempt to reproduce the PDFBox case study in Section IV.C
-of the PANKTI paper, I examined the method-extraction and
-method-matching stages. I focused on whether the extracted parameter
-signatures correctly represent Java array types and whether signature
-mismatches could explain some methods that were not matched to the
-instrumentation candidates.
+This report documents a partial reproduction and diagnostic investigation of the PDFBox case study in PANKTI. The work concentrated on the method-extraction and method-matching stages, especially the representation of multidimensional Java array parameters in JVM method signatures.
 
-The main question for this investigation is:
+The investigation identified a defect in the inspected signature-generation logic: array parameters were represented with a single `[` prefix regardless of array dimensionality. An experimental correction preserved the array depth. For example, the descriptor for `PDAnnotationMarkup.setInkList(float[][])` changed from the historical `[F` representation to the expected JVM descriptor `[[F`.
 
-> To what extent does correcting multidimensional-array descriptors
-> explain the unmatched methods in the PDFBox case study, when the
-> source scope and other selector behavior are held constant?
+The experimental matching diagnostic reported two additional matches (from 2,204 to 2,206) after two changes had been applied: the array-signature correction and a null-declaring-type guard in `MockableSelector`. Because both changes were present in the same experimental run, their individual effects have not been isolated.
 
-This is a partial reproduction and a diagnostic investigation. I do not
-claim to have reproduced the complete end-to-end PANKTI pipeline.
+**This work does not constitute a complete end-to-end reproduction of the Section IV.C production-workload experiment.** In particular, the production workload has not been independently rerun to regenerate the invocation counts, object profiles, generated tests, and test-improvement results reported in the paper. Historical repository artifacts are distinguished from measurements made during this investigation.
 
-## 2. Experimental setup and evidence
+## 2. Reference results: the correct experiment
 
-The controlled extraction targeted PDFBox's main source tree:
+The assigned target is Case Study 2 (PDFBox) in Section IV.C, which evaluates PANKTI using a production workload. The paper reports the following PDFBox results:
+
+| Metric | Paper result |
+|---|---:|
+| Invocations of target methods | 121,175 |
+| Production object profiles collected | 57,563 |
+| Unique profiles / generated differential tests | 13,851 |
+| Passing generated tests | 13,614 |
+| Failing generated tests | 237 |
+| Target methods upgraded to well-tested | 28 of 46 |
+| Target methods remaining pseudo-tested | 18 of 46 |
+
+The paper states that 57,563 profiles were collected from 46 effective target methods. After profile deduplication, 13,851 differential tests were generated and executed. The paper's prose reports 13,614 passing tests (98.3%) and 237 failing tests. The PDFBox row in Table III displays a rounded passing percentage of 98.2%; the exact count ratio is approximately 98.3%.
+
+These values are **reference results from the paper**, not results regenerated in this investigation.
+
+### 2.1 Do not confuse Section IV.C with Section IV.E
+
+The repository also contains `pdfbox/execution/system-test-report.csv`. Its TOTAL row records 18,291 tests, 17,655 passing tests, 636 failing tests, 66 well-tested methods, and 45 pseudo-tested methods. These figures correspond to the separate system-test experiment in Section IV.E (Table IV), not the production-workload experiment in Section IV.C.
+
+The two experiments use different workloads and produce different target/test counts. Therefore, the Section IV.E figures must not be used as the reproduction result for Section IV.C.
+
+## 3. Environment and scope of the current investigation
+
+The controlled extraction targeted the PDFBox main-source directory:
 
 `pdfbox/src/main/java`
 
-The extraction reported:
+The recorded extraction output was:
 
--   Methods processed: **5,801**
--   Methods extracted: **4,204**
--   Nested invocations on fields or parameters: **2,677**
+- Methods processed: **5,801**
+- Methods extracted: **4,204**
+- Nested invocations on fields or parameters: **2,677**
 
-The CSV produced by this run is recorded at:
+The output was recorded as:
 
 `controlled-main-only/extracted-methods-pdfbox-main-only-void.csv`
 
-The controlled extraction contained 4,204 rows, while the historical
-extraction file contained 6,133 rows. A signature comparison using
-declaring class, method name, parameter signature, and return type as
-the key reported 4,186 shared signatures, 1,947 historical-only
-signatures, 18 controlled-only signatures, and no duplicate keys in
-either dataset.
+A class-name heuristic checked patterns such as `Test...`, `...Test`, `...Tests`, and `...Tester`. It did not identify classes matching those patterns. This is only a heuristic and does not establish that every possible test-related source file was excluded.
 
-These counts are useful diagnostics, but the historical and controlled
-runs do not have a confirmed identical source scope. Therefore, the
-row-count difference cannot be attributed to the signature correction
-alone.
+The historical extraction artifact contained 6,133 rows. A comparison keyed by declaring class, method name, parameter signature, and return type reported:
 
-I also applied a class-name heuristic using `Test...`, `...Test`,
-`...Tests`, and `...Tester`. It did not identify matching classes under
-the tested patterns. This is only a heuristic; it does not prove that
-all test-related code was excluded.
+| Comparison | Count |
+|---|---:|
+| Shared signatures | 4,186 |
+| Historical-only signatures | 1,947 |
+| Controlled-only signatures | 18 |
+| Duplicate keys in either dataset | 0 |
 
-## 3. Code changes examined
+The historical and controlled extraction runs have not been shown to use identical source scopes and inputs. Consequently, the difference between 6,133 and 4,204 rows cannot be attributed to the array-signature correction alone. These figures are diagnostic, not a like-for-like reproduction result.
 
-### 3.1 Multidimensional-array parameter signatures
+## 4. Extractor changes investigated
 
-In the original extractor logic I inspected, an array parameter was
-represented with one `[` character regardless of its number of
-dimensions. For example, the historical record for
-`PDAnnotationMarkup.setInkList(float[][])` used `[F`. The JVM descriptor
-for a two-dimensional float array is `[[F`.
+### 4.1 Multidimensional-array parameter signatures
 
-In the experimental extractor copy, I changed the signature generation
-to preserve the number of array dimensions. The controlled extraction
-recorded `[[F` for `PDAnnotationMarkup.setInkList`.
+The original signature logic inspected during this investigation added only one `[` character whenever a parameter was an array. This loses dimensionality for multidimensional arrays.
 
-The matching diagnostic also reported that
-`PDAnnotationMarkup.setInkList` and `ByteTrie.addPath` became matchable
-after the experimental changes. Both involve multidimensional array
-parameters. This is consistent with the descriptor correction helping
-these cases.
+For example:
 
-However, because the experimental run included another change described
-below, the current comparison does not isolate the array-signature fix
-as the sole cause of the two additional matches.
+- Java type: `float[]` — expected JVM descriptor: `[F`
+- Java type: `float[][]` — expected JVM descriptor: `[[F`
+- Java type: `float[][][]` — expected JVM descriptor: `[[[F`
 
-### 3.2 Null declaring-type guard in `MockableSelector`
+For `PDAnnotationMarkup.setInkList(float[][])`, the historical extraction recorded `[F`, while the experimental extractor recorded `[[F`. This confirms the corrected descriptor for the inspected example.
 
-I also added a guard in the experimental `MockableSelector` for
-invocations with no declaring-type reference. In this case, the selector
-returns `false` rather than raising a `NullPointerException`.
+### 4.2 Null declaring-type guard
 
-This is a behavioral change: it can affect which methods are classified
-as mockable. It should not be bundled with the signature correction when
-drawing causal conclusions about the matching result.
+A second experimental change added a null guard in `MockableSelector` for invocations without a declaring-type reference. In that case, the selector returns `false` instead of throwing a `NullPointerException`.
 
-The experimental Maven build completed successfully after these changes.
-A successful build verifies compilation and packaging, but it does not
-by itself verify the full reproduction.
+This can affect mockability classification. It is therefore a behavioral change and must be considered separately from the signature correction when interpreting matching results.
 
-## 4. Method-matching diagnostic
+The experimental Maven build completed successfully after these changes. A successful build confirms compilation and packaging, but does not establish end-to-end reproduction.
 
-The historical matching diagnostic reported:
+## 5. Method-matching diagnostic
+
+The historical diagnostic reported:
 
 | Metric | Historical diagnostic |
 |---|---:|
@@ -111,7 +103,7 @@ The historical matching diagnostic reported:
 | Duplicate matches | 0 |
 | Match rate | 79.86% |
 
-After the experimental changes, the diagnostic reported:
+After the two experimental changes had been applied, the diagnostic reported:
 
 | Metric | Experimental diagnostic |
 |---|---:|
@@ -120,157 +112,68 @@ After the experimental changes, the diagnostic reported:
 | Duplicate matches | 0 |
 | Match rate | 79.93% |
 
-The match count increased by two, from 2,204 to 2,206, and the reported
-match rate increased by approximately 0.07 percentage points. The two
-newly matched methods were `PDAnnotationMarkup.setInkList` and
-`ByteTrie.addPath`.
+The two additional matched methods were:
 
-This is a small but interpretable change. It supports further
-investigation of array descriptors, but it does not show that all
-remaining unmatched methods are bugs or should necessarily be
-instrumented.
+- `PDAnnotationMarkup.setInkList`, involving a two-dimensional `float` array.
+- `ByteTrie.addPath`, involving a two-dimensional `byte` array.
 
-## 5. Distinguishing the two PDFBox experiments in the paper
+The observed increase is consistent with multidimensional-array signature correction helping these cases. However, the array-signature correction and null guard were both included in the experimental run. Without an ablation under identical source scope and inputs, the two additional matches cannot be causally attributed to the array correction alone.
 
-### 5.1 Case Study 2 — production workload (Section IV.C)
+The remaining 554 unmatched methods have not all been classified. It would be incorrect to assume that every unmatched method represents a defect: source-scope differences, eligibility rules, overloads, and selector behavior may also explain mismatches.
 
-The task assigned to me is to reproduce Case Study 2 in Section IV.C. In the paper, this is the PDFBox production-workload experiment. The reference results for PDFBox are 121,175 target-method invocations, 57,563 collected production object profiles, 13,851 unique profiles / generated differential tests, 13,614 passing tests, and 237 failing tests. The paper reports that 28 of the 46 effective target methods become well-tested after adding the generated tests. These are the reference values that a reproduction of Section IV.C should compare against.
+## 6. Historical downstream artifacts
 
-The current investigation described in this report has focused mainly on extraction, method signatures, and matching diagnostics. It has not independently regenerated the complete production workload, object-profile collection, generated-test set, and test-improvement assessment needed to claim reproduction of these Section IV.C results.
+Two historical summaries are present in the original experiment repository:
 
-### 5.2 Separate system-test experiment (Section IV.E, Table IV)
+1. `pdfbox/README.md` records 129 instrumented methods, 46 invoked methods, 13,804 generated test cases, 1,840 executed tests, 1,597 passing tests, and 243 failing tests.
+2. `pdfbox/execution/system-test-report.csv` records the separate Section IV.E system-test results described in Section 2.1 above.
 
-The repository also contains `pdfbox/execution/system-test-report.csv`. Its `TOTAL` row for PDFBox records 18,291 tests, 17,655 passing tests, 636 failing tests, 66 methods marked `well-tested`, and 45 marked `pseudo-tested`. These figures match the PDFBox row in Table IV, which belongs to the separate system-test experiment in Section IV.E. They are not the production-workload results of Case Study 2 in Section IV.C.
+The README figures have not been reconciled with the Section IV.C production-workload results or with the Section IV.E system-test results. The execution log contains timestamps from November 2020, so it is historical evidence rather than a log of the current investigation.
 
-### 5.3 Other historical README summary
+These artifacts are retained as historical records. They are not presented as newly generated results.
 
+## 7. Findings and limitations
 
-The repository contains two historical summaries that initially appear
-inconsistent.
+The current evidence supports the following conclusions:
 
-### 5.1 `pdfbox/README.md`
+1. The inspected original signature logic did not preserve multidimensional-array depth.
+2. The experimental extractor produced the expected `[[F` descriptor for the inspected `float[][]` parameter.
+3. The combined experimental changes coincided with two additional matches and a small increase in the matching rate.
+4. The current comparison does not isolate the contribution of the array-signature fix from the null guard.
+5. The historical and controlled extraction datasets have not been confirmed to use identical source scopes.
+6. The production-workload phase of Section IV.C has not been independently rerun end to end.
+7. The Section IV.E system-test report is a different experiment and cannot substitute for Section IV.C results.
 
-The README records 129 instrumented methods, 46 invoked methods, 13,804
-generated test cases, 1,840 executed tests, 1,597 passing tests, and 243
-failing tests.
+## 8. Recommended next validation steps
 
-### 5.2 `pdfbox/execution/system-test-report.csv`
+To strengthen the diagnostic result, the following steps are recommended:
 
-The CSV's `TOTAL` row records 18,291 tests, 17,655 passing tests, 636
-failing tests, 66 methods marked `well-tested`, and 45 marked
-`pseudo-tested`. The per-method report contains 111 method rows, plus
-the `TOTAL` row.
+1. Run a four-configuration ablation with identical PDFBox source scope and inputs: baseline, array-signature fix only, null guard only, and both changes.
+2. Add regression tests for one-, two-, and three-dimensional primitive arrays and one- and two-dimensional reference arrays.
+3. Record the exact source revision, commands, Java/Maven versions, input paths, and output hashes for each run.
+4. Classify a sample of the remaining unmatched methods by inspected cause before attempting to classify the full set.
+5. If the goal is a full Section IV.C reproduction, rerun the production workload, collect object profiles, generate and execute tests, and compare each stage against the paper's reference results.
 
-These CSV totals match the PDFBox row in Table IV of the paper's
-system-test experiment: 18,291 PANKTI tests, 17,655 passing, 636
-failing, and 66 of 111 effective targets classified as well-tested, with
-45 remaining pseudo-tested. The paper also reports 150 system tests and
-111 effective targets out of 138 target methods for PDFBox in this
-experiment.
+These are proposed follow-up steps; they have not been completed as part of the current investigation.
 
-The README summary should not be substituted for these system-test
-figures. It may refer to a different experiment stage, configuration, or
-artifact version, but I have not established its provenance. The
-repository's execution log includes timestamps from 3 November 2020,
-confirming that at least that log is historical rather than a record of
-my current controlled extraction.
+## 9. Questions for the authors
 
-This distinction matters: the CSV provides evidence that the repository
-contains a report consistent with the paper's system-test results, but
-it does not establish that I regenerated those downstream results during
-this investigation.
+I would appreciate guidance on two points:
 
-## 6. Interpretation
+1. For the two additional method matches, would you recommend first isolating the array-signature correction and the null-declaring-type guard through a controlled ablation under identical inputs?
+2. When investigating the remaining unmatched methods, is there a recommended diagnostic procedure for distinguishing descriptor mismatches from source-scope differences and selector-eligibility exclusions?
 
-The most defensible conclusion from the current evidence is narrow:
+## 10. Reproduction status
 
-1.  The original signature logic I inspected did not preserve
-    multidimensional-array depth.
-2.  The experimental extractor produced the expected `[[F` descriptor
-    for `PDAnnotationMarkup.setInkList(float[][])`.
-3.  The combined experimental changes coincided with two additional
-    matched methods and a small increase in the matching rate.
-4.  The current results do not isolate the contribution of the
-    array-signature change from the null-declaring-type guard.
-5.  Historical downstream artifacts can be compared with the paper, but
-    they must not be described as newly reproduced results.
+**Status: Partial reproduction / diagnostic investigation.**
 
-The main unresolved issue is causal attribution: did the array-signature
-correction itself account for both new matches, and what explains the
-remaining 554 unmatched methods?
+The work verified a targeted multidimensional-array descriptor correction and documented a small change in method matching. It also identified the distinction between the production-workload experiment in Section IV.C and the system-test experiment in Section IV.E.
 
-## 7. Optional diagnostic follow-up: controlled ablation
+The full Section IV.C production-workload pipeline and its reported outcomes have not been independently regenerated. This report therefore makes no claim of complete reproduction. All historical values, current diagnostic measurements, and proposed follow-up work are explicitly distinguished.
 
-A small controlled ablation would make the method-matching diagnosis substantially stronger, but it was not explicitly requested in the assignment. It is optional and should not replace the main goal of reproducing the Section IV.C production-workload experiment.
-without requiring an immediate rerun of the entire production workload.
-I propose running the same extraction and matching procedure with the
-same PDFBox source scope and the same input artifacts under four
-configurations:
+## References
 
-| Configuration | Array-signature fix | Null guard |
-|---|---|---|
-| A — baseline | No | No |
-| B — signature only | Yes | No |
-| C — guard only | No | Yes |
-| D — combined changes | Yes | Yes |
-
-For each configuration, record the exact source revision, command,
-source scope, number of extracted methods, eligible methods, matched and
-unmatched methods, duplicate matches, and match rate. The existing
-historical result can serve as a reference, but it should only be
-treated as the baseline if its source scope and inputs can be confirmed
-to match.
-
-Before running the full comparison, add small regression tests for JVM
-descriptors such as:
-
--   `float[]` → `[F`
--   `float[][]` → `[[F`
--   `float[][][]` → `[[[F`
--   `String[]` → `[Ljava/lang/String;`
--   `String[][]` → `[[Ljava/lang/String;`
-
-Also test that `MockableSelector` behaves as intended when the
-declaring-type reference is null. This would help distinguish a
-descriptor bug from a classification side effect.
-
-The most informative next analysis would classify the remaining
-unmatched methods by reason, for example: signature mismatch,
-source-scope mismatch, overload ambiguity, missing or ineligible method,
-or selector exclusion. These categories should be based on inspection
-rather than assumed in advance. A short unmatched-method sample can
-establish whether the proposed categories are useful before analyzing
-all 554 methods.
-
-## 8. Questions for discussion
-
-The current findings raise two research questions that would be useful
-to discuss with the authors:
-
-1.  **Attribution:** Is it reasonable to attribute the two additional
-    matches to multidimensional-array descriptor correction, or should
-    the array fix and null guard first be evaluated independently under
-    identical source scope and inputs?
-2.  **Remaining unmatched methods:** Is there an expected explanation or
-    diagnostic procedure for the remaining unmatched methods? In
-    particular, would the authors recommend prioritizing JVM descriptor
-    normalization, source-scope alignment, or selector eligibility
-    checks when investigating these mismatches?
-
-These questions are intended to clarify the reproduction methodology and
-strengthen the evidence, rather than to challenge the paper's reported
-results.
-
-## 9. Limitations and current status
-
-This work has not regenerated the full end-to-end case study, and the
-provenance of the README's separate downstream figures remains
-unresolved. The controlled extraction and matching diagnostics are the
-results of the current investigation; the historical test reports are
-treated as existing artifacts.
-
-**Current status: Partial reproduction.** I verified a targeted
-multidimensional-array signature correction and observed two additional
-matches in a diagnostic run that also included a selector guard. A
-controlled ablation with identical inputs is the next step needed to
-attribute the improvement confidently.
+- Tiwari, D., Zhang, L., Monperrus, M., and Baudry, B. *Production Monitoring to Improve Test Suites*. arXiv:2012.01198v4, 2021. https://arxiv.org/abs/2012.01198
+- PANKTI source repository: https://github.com/castor-software/pankti
+- PANKTI experiment artifacts: https://github.com/castor-software/pankti-experiments
+- Apache PDFBox 2.0.21: https://github.com/apache/pdfbox/tree/2.0.21
