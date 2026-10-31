@@ -130,7 +130,20 @@ investigation of array descriptors, but it does not show that all
 remaining unmatched methods are bugs or should necessarily be
 instrumented.
 
-## 5. Reconciling the downstream test reports
+## 5. Distinguishing the two PDFBox experiments in the paper
+
+### 5.1 Case Study 2 — production workload (Section IV.C)
+
+The task assigned to me is to reproduce Case Study 2 in Section IV.C. In the paper, this is the PDFBox production-workload experiment. The reference results for PDFBox are 121,175 target-method invocations, 57,563 collected production object profiles, 13,851 unique profiles / generated differential tests, 13,614 passing tests, and 237 failing tests. The paper reports that 28 of the 46 effective target methods become well-tested after adding the generated tests. These are the reference values that a reproduction of Section IV.C should compare against.
+
+The current investigation described in this report has focused mainly on extraction, method signatures, and matching diagnostics. It has not independently regenerated the complete production workload, object-profile collection, generated-test set, and test-improvement assessment needed to claim reproduction of these Section IV.C results.
+
+### 5.2 Separate system-test experiment (Section IV.E, Table IV)
+
+The repository also contains `pdfbox/execution/system-test-report.csv`. Its `TOTAL` row for PDFBox records 18,291 tests, 17,655 passing tests, 636 failing tests, 66 methods marked `well-tested`, and 45 marked `pseudo-tested`. These figures match the PDFBox row in Table IV, which belongs to the separate system-test experiment in Section IV.E. They are not the production-workload results of Case Study 2 in Section IV.C.
+
+### 5.3 Other historical README summary
+
 
 The repository contains two historical summaries that initially appear
 inconsistent.
@@ -186,9 +199,9 @@ The main unresolved issue is causal attribution: did the array-signature
 correction itself account for both new matches, and what explains the
 remaining 554 unmatched methods?
 
-## 7. Proposed follow-up experiment
+## 7. Optional diagnostic follow-up: controlled ablation
 
-A small controlled ablation would make the result substantially stronger
+A small controlled ablation would make the method-matching diagnosis substantially stronger, but it was not explicitly requested in the assignment. It is optional and should not replace the main goal of reproducing the Section IV.C production-workload experiment.
 without requiring an immediate rerun of the entire production workload.
 I propose running the same extraction and matching procedure with the
 same PDFBox source scope and the same input artifacts under four
