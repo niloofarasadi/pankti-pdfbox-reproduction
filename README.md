@@ -75,9 +75,12 @@ I describe the evidence and limitations in [docs/experimental-findings.md](docs/
 
 For each new experiment, I aim to record the exact source revision, source scope, command, configuration, output artifacts, and SHA-256 hashes. I keep baseline and candidate outputs separate. I also avoid attributing an observed change to one code modification unless a controlled comparison isolates that modification.
 
-## Next step
+## Remaining work
 
-My next step is to run a four-way ablation with identical PDFBox source scope and inputs:
+The main outstanding task is to reproduce the PDFBox production-workload experiment from Section IV.C. The paper reports 121,175 target-method invocations, 57,563 collected production object profiles, 13,851 generated differential tests, 13,614 passing tests, 237 failing tests, and 28 of 46 effective target methods becoming well-tested. My current extraction and matching diagnostics do not yet establish this end-to-end reproduction.
+
+The four-way ablation below is an **optional diagnostic extension**, not a requirement stated in the assignment. It can help isolate the effects of the two experimental code changes, but it should not take priority over completing the requested Case Study 2 reproduction.
+
 
 | Configuration | Array-signature fix | Null guard |
 |---|---:|---:|
