@@ -64,3 +64,32 @@ The existing `system-test-report.csv` remains a separate historical system-test 
 - The scripts contain hard-coded Linux paths and shell commands, so they are not directly executable in Windows CMD.
 - The audit does not modify or regenerate any original experiment output.
 - The provenance of `report.csv` and `system-test-report.csv` remains an open question.
+
+
+## 6. Cross-check against the public PANKTI repositories
+
+A read-only inspection of the public `ASSERT-KTH/pankti` documentation confirms the four-stage workflow: Extract, Instrument, Execute, and Generate. During Execute, Glowroot/PANKTI stores serialized object profiles under `/tmp/pankti-object-data/` and writes `invoked-methods.csv`. The separate `pankti-generate` tool consumes the project path, invoked-methods CSV, and object-profile directory, then writes generated Java test classes under its `output/generated/<project-name>/` directory.
+
+This documents the producer of the object-profile inputs and generated test source files. It does **not** document a producer for the experiment summary file `execution/report.csv`.
+
+The public `ASSERT-KTH/pankti-experiments` PDFBox directory contains the same `execution/report.csv`, `execution/system-test-report.csv`, execution scripts, and LOC-selection files inspected locally. Its `data/analysis.ipynb` contains a manually constructed project-level dataframe with the PDFBox aggregate values 121,175 invocations, 57,563 collected profiles, and 13,851 unique profiles. A search through the notebook's code cells for `report.csv`, `system-test-report.csv`, and the report column names did not reveal code that writes either execution summary CSV. The notebook includes analysis of object-profile size files, but this does not establish the summary CSV's producer.
+
+### 6.1 Three different PDFBox test-count summaries
+
+The public artifacts and paper contain three non-identical summaries:
+
+| Artifact / reference | Generated or unique profiles | Executed tests | Passing | Failing |
+|---|---:|---:|---:|---:|
+| Paper, Section IV.C production workload | 13,851 | 13,851 differential tests | 13,614 | 237 |
+| `execution/report.csv` TOTAL row | 13,851 unique profiles | 2,238 | 2,001 | 237 |
+| `pdfbox/README.md` | 13,804 generated test cases | 1,840 | 1,597 | 243 |
+
+The paper reports 28 of 46 effective target methods upgraded to well-tested and 18 remaining pseudo-tested. The execution CSV TOTAL row instead labels 29 methods as tested/partially-tested and 17 as pseudo-tested. The README reports 17 tested, 11 partially tested, and 18 pseudo-tested, which sums to 28 methods upgraded and 18 remaining pseudo-tested, matching the paper's classification counts when tested and partially-tested are combined.
+
+These differences are unresolved. In particular, the matching generated/unique-profile total and failing-test count in `report.csv` do not explain why its executed and passing test counts differ from the paper. The README's generated, executed, passing, and failing counts also do not match the paper exactly. Do not silently substitute one set of values for another or describe the local CSV as an exact regenerated paper result.
+
+### 6.2 Current provenance conclusion
+
+The public PANKTI documentation establishes where object profiles and generated test source files come from. The public experiment repository establishes that the summary CSVs are historical artifacts committed alongside the scripts. However, no inspected public script or notebook has yet been identified as the code that creates `execution/report.csv` or `execution/system-test-report.csv`.
+
+The precise producer, generation command, and reason for the differing test totals remain unresolved. Further progress requires tracing the historical post-processing/Descartes assessment step or obtaining the original experimenter's clarification. This audit did not execute or modify any historical experiment.
