@@ -1,0 +1,25 @@
+.ipynb_checkpoints
+
+
+# Niloofar: PDFBox reproduction - generated workload outputs
+/pdfbox/execution/workload/*-decoded.pdf
+/pdfbox/execution/workload/*-from-pdf.txt
+/pdfbox/execution/workload/*-from-txt.pdf
+/pdfbox/execution/workload/*-locked*
+/pdfbox/execution/workload/*-unlocked.pdf
+/pdfbox/execution/workload/*-merged.pdf
+/pdfbox/execution/workload/*-overlaid.pdf
+/pdfbox/execution/workload/*-test-font.pdf
+/pdfbox/execution/workloadAsImage*.png
+
+# Niloofar: Local tools and temporary files
+/tools/
+/pdfbox/tools/
+/pdfbox/execution/module_loc
+/pdfbox/execution/rm
+/pdfbox/execution/type
+
+# Niloofar: Temporary PDFBox files
+/pdfbox/module_loc
+/pdfbox/rm
+/pdfbox/type
