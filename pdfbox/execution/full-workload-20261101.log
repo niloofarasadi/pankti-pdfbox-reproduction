@@ -1,0 +1,449 @@
+========== PDF 000752 ==========
+[2026-11-01 11:55:50] START: 000752 Encrypt
+2026-11-01 11:55:50.944 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:55:52.424 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:55:52.425 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+2026-11-01 11:55:54.358 INFO  org.glowroot - creating glowroot schema...
+2026-11-01 11:55:54.491 INFO  org.glowroot - glowroot schema created
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:55:56] SUCCESS: 000752 Encrypt
+[2026-11-01 11:55:56] START: 000752 Decrypt
+2026-11-01 11:55:57.212 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:55:57.214 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:55:57.215 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:00] SUCCESS: 000752 Decrypt
+[2026-11-01 11:56:00] START: 000752 ExtractText
+2026-11-01 11:56:01.584 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:01.586 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:01.587 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:06] SUCCESS: 000752 ExtractText
+[2026-11-01 11:56:06] START: 000752 ExtractImages
+2026-11-01 11:56:07.187 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:07.188 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:07.189 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-1
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-2
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-3
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-4
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-5
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-6
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000752-7
+[2026-11-01 11:56:12] SUCCESS: 000752 ExtractImages
+[2026-11-01 11:56:12] START: 000752 PDFToImage
+2026-11-01 11:56:12.769 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:12.771 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:12.771 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2026-11-01 11:56:18.357 INFO  org.glowroot - UI listening on 127.0.0.1:4000 (to access the UI from remote machines, change the bind address to 0.0.0.0, either in the Glowroot UI under Configuration > Web or directly in the admin.json file, and then restart JVM to take effect)
+[2026-11-01 11:56:19] SUCCESS: 000752 PDFToImage
+[2026-11-01 11:56:19] START: 000752 TextToPDF
+2026-11-01 11:56:20.563 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:20.565 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:20.565 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:24] SUCCESS: 000752 TextToPDF
+[2026-11-01 11:56:24] START: 000752 PDFSplit
+2026-11-01 11:56:25.515 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:25.518 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:25.520 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:29] SUCCESS: 000752 PDFSplit
+[2026-11-01 11:56:29] START: 000752 PDFMerger
+2026-11-01 11:56:30.023 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:30.025 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:30.025 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:33] SUCCESS: 000752 PDFMerger
+[2026-11-01 11:56:33] START: 000752 WriteDecodedDoc
+2026-11-01 11:56:34.339 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:34.341 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:34.342 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:38] SUCCESS: 000752 WriteDecodedDoc
+[2026-11-01 11:56:38] START: 000752 OverlayPDF
+2026-11-01 11:56:39.271 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:39.273 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:39.273 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:43] SUCCESS: 000752 OverlayPDF
+========== PDF 000753 ==========
+[2026-11-01 11:56:43] START: 000753 Encrypt
+2026-11-01 11:56:44.094 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:44.098 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:44.098 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:48] SUCCESS: 000753 Encrypt
+[2026-11-01 11:56:48] START: 000753 Decrypt
+2026-11-01 11:56:49.222 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:49.224 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:49.225 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:52] SUCCESS: 000753 Decrypt
+[2026-11-01 11:56:52] START: 000753 ExtractText
+2026-11-01 11:56:53.469 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:53.476 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:53.477 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:56:58] SUCCESS: 000753 ExtractText
+[2026-11-01 11:56:58] START: 000753 ExtractImages
+2026-11-01 11:56:59.035 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:56:59.037 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:56:59.037 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-1
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-2
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-3
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-4
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-5
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-6
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-7
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-8
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-9
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-10
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-11
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-12
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-13
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-14
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-15
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-16
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-17
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-18
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000753-19
+[2026-11-01 11:57:04] SUCCESS: 000753 ExtractImages
+[2026-11-01 11:57:05] START: 000753 PDFToImage
+2026-11-01 11:57:05.573 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:05.575 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:05.576 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2026-11-01 11:57:11.049 INFO  org.glowroot - UI listening on 127.0.0.1:4000 (to access the UI from remote machines, change the bind address to 0.0.0.0, either in the Glowroot UI under Configuration > Web or directly in the admin.json file, and then restart JVM to take effect)
+[2026-11-01 11:57:13] SUCCESS: 000753 PDFToImage
+[2026-11-01 11:57:13] START: 000753 TextToPDF
+2026-11-01 11:57:13.966 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:13.969 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:13.969 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.lang.IllegalArgumentException: No glyph for U+FFFD (?) in font ArialMT
+	at org.apache.pdfbox.pdmodel.font.PDCIDFontType2.encode(PDCIDFontType2.java:361)
+	at org.apache.pdfbox.pdmodel.font.PDType0Font.encode(PDType0Font.java:415)
+	at org.apache.pdfbox.pdmodel.font.PDFont.encode(PDFont.java:332)
+	at org.apache.pdfbox.pdmodel.PDPageContentStream.showTextInternal(PDPageContentStream.java:514)
+	at org.apache.pdfbox.pdmodel.PDPageContentStream.showText(PDPageContentStream.java:476)
+	at org.apache.pdfbox.tools.TextToPDF.createPDFFromText(TextToPDF.java:229)
+	at org.apache.pdfbox.tools.TextToPDF.main(TextToPDF.java:333)
+	at org.apache.pdfbox.tools.PDFBox.main(PDFBox.java:97)
+[2026-11-01 11:57:18] FAILED (1): 000753 TextToPDF
+[2026-11-01 11:57:18] START: 000753 PDFSplit
+2026-11-01 11:57:19.103 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:19.105 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:19.105 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:23] SUCCESS: 000753 PDFSplit
+[2026-11-01 11:57:23] START: 000753 PDFMerger
+2026-11-01 11:57:24.163 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:24.165 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:24.165 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:27] SUCCESS: 000753 PDFMerger
+[2026-11-01 11:57:27] START: 000753 WriteDecodedDoc
+2026-11-01 11:57:28.428 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:28.430 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:28.431 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:32] SUCCESS: 000753 WriteDecodedDoc
+[2026-11-01 11:57:32] START: 000753 OverlayPDF
+2026-11-01 11:57:33.119 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:33.121 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:33.121 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:36] SUCCESS: 000753 OverlayPDF
+========== PDF 000810 ==========
+[2026-11-01 11:57:37] START: 000810 Encrypt
+2026-11-01 11:57:37.858 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:37.862 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:37.863 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:42] SUCCESS: 000810 Encrypt
+[2026-11-01 11:57:42] START: 000810 Decrypt
+2026-11-01 11:57:42.909 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:42.916 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:42.916 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:46] SUCCESS: 000810 Decrypt
+[2026-11-01 11:57:46] START: 000810 ExtractText
+2026-11-01 11:57:47.408 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:47.410 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:47.410 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:57:51] SUCCESS: 000810 ExtractText
+[2026-11-01 11:57:51] START: 000810 ExtractImages
+2026-11-01 11:57:52.509 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:52.515 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:52.515 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Writing image: C:/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/workload/000810-1
+[2026-11-01 11:57:58] SUCCESS: 000810 ExtractImages
+[2026-11-01 11:57:58] START: 000810 PDFToImage
+2026-11-01 11:57:58.770 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:57:58.784 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:57:58.785 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2026-11-01 11:58:04.232 INFO  org.glowroot - UI listening on 127.0.0.1:4000 (to access the UI from remote machines, change the bind address to 0.0.0.0, either in the Glowroot UI under Configuration > Web or directly in the admin.json file, and then restart JVM to take effect)
+[2026-11-01 11:58:05] SUCCESS: 000810 PDFToImage
+[2026-11-01 11:58:05] START: 000810 TextToPDF
+2026-11-01 11:58:06.483 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:06.485 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:06.486 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:10] SUCCESS: 000810 TextToPDF
+[2026-11-01 11:58:10] START: 000810 PDFSplit
+2026-11-01 11:58:11.107 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:11.111 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:11.111 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:14] SUCCESS: 000810 PDFSplit
+SKIPPED: 000810 PDFMerger (fewer than 2 valid split files)
+[2026-11-01 11:58:15] START: 000810 WriteDecodedDoc
+2026-11-01 11:58:15.693 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:15.695 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:15.695 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:19] SUCCESS: 000810 WriteDecodedDoc
+[2026-11-01 11:58:19] START: 000810 OverlayPDF
+2026-11-01 11:58:20.556 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:20.557 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:20.558 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:24] SUCCESS: 000810 OverlayPDF
+========== PDF 000817 ==========
+[2026-11-01 11:58:24] START: 000817 Encrypt
+2026-11-01 11:58:25.147 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:25.149 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:25.149 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:29] SUCCESS: 000817 Encrypt
+[2026-11-01 11:58:29] START: 000817 Decrypt
+2026-11-01 11:58:29.799 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:29.802 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:29.802 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:33] SUCCESS: 000817 Decrypt
+[2026-11-01 11:58:33] START: 000817 ExtractText
+2026-11-01 11:58:34.136 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:34.138 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:34.138 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:38] SUCCESS: 000817 ExtractText
+[2026-11-01 11:58:39] START: 000817 ExtractImages
+2026-11-01 11:58:39.614 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:39.617 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:39.618 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:58:43] SUCCESS: 000817 ExtractImages
+[2026-11-01 11:58:44] START: 000817 PDFToImage
+2026-11-01 11:58:44.973 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:44.975 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:44.976 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2026-11-01 11:58:50.892 INFO  org.glowroot - UI listening on 127.0.0.1:4000 (to access the UI from remote machines, change the bind address to 0.0.0.0, either in the Glowroot UI under Configuration > Web or directly in the admin.json file, and then restart JVM to take effect)
+[2026-11-01 11:58:53] SUCCESS: 000817 PDFToImage
+[2026-11-01 11:58:53] START: 000817 TextToPDF
+2026-11-01 11:58:54.139 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:54.139 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:54.139 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.lang.IllegalArgumentException: No glyph for U+FFFD (?) in font ArialMT
+	at org.apache.pdfbox.pdmodel.font.PDCIDFontType2.encode(PDCIDFontType2.java:361)
+	at org.apache.pdfbox.pdmodel.font.PDType0Font.encode(PDType0Font.java:415)
+	at org.apache.pdfbox.pdmodel.font.PDFont.encode(PDFont.java:332)
+	at org.apache.pdfbox.pdmodel.font.PDFont.getStringWidth(PDFont.java:363)
+	at org.apache.pdfbox.tools.TextToPDF.createPDFFromText(TextToPDF.java:200)
+	at org.apache.pdfbox.tools.TextToPDF.main(TextToPDF.java:333)
+	at org.apache.pdfbox.tools.PDFBox.main(PDFBox.java:97)
+[2026-11-01 11:58:58] FAILED (1): 000817 TextToPDF
+[2026-11-01 11:58:58] START: 000817 PDFSplit
+2026-11-01 11:58:59.228 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:58:59.230 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:58:59.230 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:59:03] SUCCESS: 000817 PDFSplit
+[2026-11-01 11:59:03] START: 000817 PDFMerger
+2026-11-01 11:59:04.300 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:59:04.302 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:59:04.302 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:59:07] SUCCESS: 000817 PDFMerger
+[2026-11-01 11:59:07] START: 000817 WriteDecodedDoc
+2026-11-01 11:59:08.582 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:59:08.584 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:59:08.584 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:59:12] SUCCESS: 000817 WriteDecodedDoc
+[2026-11-01 11:59:12] START: 000817 OverlayPDF
+2026-11-01 11:59:12.997 INFO  org.glowroot - Glowroot version: 0.13.6, built 2020-03-01 01:25:31 +0000
+2026-11-01 11:59:12.999 INFO  org.glowroot - Java version: 11.0.32.1 (Eclipse Adoptium / Windows 11)
+2026-11-01 11:59:13.000 INFO  org.glowroot - Java args: -javaagent:C:/Research/pankti/pankti-experiments/tools/glowroot/glowroot.jar
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[2026-11-01 11:59:17] SUCCESS: 000817 OverlayPDF
+========== WORKLOAD FINISHED ==========
+PANKTI data: /c/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/glowroot-data-full
+Glowroot data: /c/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/glowroot-full
+Outputs: /c/Research/pankti/pankti-experiments/pdfbox/execution/reproduction-run-20261101/outputs-full

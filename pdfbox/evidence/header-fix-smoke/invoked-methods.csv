@@ -1,0 +1,14 @@
+visibility,parent-FQN,method-name,param-list,return-type,param-signature,has-mockable-invocations,nested-invocations,classification
+public,org.apache.pdfbox.pdfparser.XrefTrailerResolver,getXrefType,,org.apache.pdfbox.pdfparser.XrefTrailerResolver$XRefType,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdfparser.COSParser,getEncryption,,org.apache.pdfbox.pdmodel.encryption.PDEncryption,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.DefaultResourceCache,getExtGState,org.apache.pdfbox.cos.COSObject,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,Lorg/apache/pdfbox/cos/COSObject;,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.PDResources,getExtGState,org.apache.pdfbox.cos.COSName,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,Lorg/apache/pdfbox/cos/COSName;,True,"[{nestedInvocationMode='DOMAIN',nestedInvocationReturnType='void',nestedInvocationTargetType=FIELD,nestedInvocationFieldName='{cache=private}',nestedInvocationDeclaringType='org.apache.pdfbox.pdmodel.ResourceCache',nestedInvocationMethod='put',nestedInvocationParams='[org.apache.pdfbox.cos.COSObject,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState]',nestedInvocationSignature='put(org.apache.pdfbox.cos.COSObject,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState)'}]",pseudo-tested
+public,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,getAutomaticStrokeAdjustment,,boolean,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,getStrokingOverprintControl,,boolean,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,getSmoothnessTolerance,,java.lang.Float,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,getNonStrokingOverprintControl,,boolean,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState,getOverprintMode,,java.lang.Float,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.DefaultResourceCache,getFont,org.apache.pdfbox.cos.COSObject,org.apache.pdfbox.pdmodel.font.PDFont,Lorg/apache/pdfbox/cos/COSObject;,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.font.PDSimpleFont,toUnicode,int,java.lang.String,I,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.font.PDFontDescriptor,getFlags,,int,,False,[],pseudo-tested
+public,org.apache.pdfbox.pdmodel.font.PDFontDescriptor,isSymbolic,,boolean,,False,[],pseudo-tested

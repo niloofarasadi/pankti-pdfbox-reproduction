@@ -177,3 +177,63 @@ The full Section IV.C production-workload pipeline and its reported outcomes hav
 - PANKTI source repository: https://github.com/castor-software/pankti
 - PANKTI experiment artifacts: https://github.com/castor-software/pankti-experiments
 - Apache PDFBox 2.0.21: https://github.com/apache/pdfbox/tree/2.0.21
+
+## 11. Additional workload and CSV validation (1 November 2026)
+
+A controlled workload was executed on Windows 11 using Java 11.0.32.1,
+Apache PDFBox 2.0.21, Glowroot 0.13.6, and the PANKTI instrumentation plugin.
+
+The workload processed four PDF inputs and attempted 39 operations:
+- 37 operations completed successfully.
+- 2 TextToPDF operations failed because ArialMT did not support U+FFFD.
+- 1 PDFMerger operation was skipped because fewer than two valid split files were available.
+
+This was a fresh controlled workload, not an exact rerun of the original
+production workload used in Section IV.C of the paper.
+
+### 11.1 CSV header defect
+
+Inspection revealed a mismatch in AdviceTemplate.java:
+generated method rows contained nine fields, including `classification`,
+while the CSV header contained only eight fields.
+
+The header was corrected to include the ninth field, `classification`.
+The instrumentation module was rebuilt successfully, and the rebuilt plugin
+was copied into the Glowroot plugins directory.
+
+### 11.2 Isolated validation
+
+A separate smoke test executed PDFBox ExtractText on input 000752.pdf
+using the rebuilt plugin and a fresh storage directory.
+
+The test generated the extracted text and invoked-methods.csv.
+
+CSV validation confirmed:
+- Header columns: 9
+- Classification column: present
+- Data rows: 13
+- Sample classification: pseudo-tested
+- Extra fields without a header: none
+
+The original full-workload CSV was not modified. The corrected CSV belongs
+to the isolated smoke test.
+
+### 11.3 Configurable storage directory
+
+The instrumentation code was also modified to allow the object-data
+directory to be configured through the JVM system property
+pankti.storage.dir. The original default path is retained for
+backward compatibility.
+
+This is a local experimental change and should be considered when
+comparing this setup with the unmodified upstream implementation.
+
+### 11.4 Interpretation
+
+These results validate the CSV header correction and demonstrate that
+the rebuilt instrumentation plugin can produce a correctly structured
+CSV during an isolated PDFBox execution.
+
+They do not establish a complete reproduction of the Section IV.C
+production-workload experiment or independently validate the paper's
+reported test-improvement results.
