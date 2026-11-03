@@ -33,7 +33,30 @@ My current research question is:
 > To what extent does correcting multidimensional-array descriptors explain the unmatched methods in the PDFBox case study, when source scope and other selector behavior are held constant?
 
 This is **not** a claim of complete end-to-end reproduction. The current work is a partial reproduction and diagnostic investigation.
+## Reproduction Status and Contributions
 
+This reproduction effort has involved the following activities:
+
+- Setting up the Apache PDFBox 2.0.21 experimental environment.
+- Investigating the PANKTI method extraction and matching pipeline.
+- Identifying an issue in multidimensional-array parameter descriptors.
+- Implementing and evaluating an experimental correction to array signature handling.
+- Investigating selector behavior and unmatched methods.
+- Comparing baseline and experimental method-matching results.
+- Documenting experimental evidence, limitations, and remaining reproduction tasks.
+
+### Current status
+
+| Activity | Status |
+|---|---|
+| Experimental environment setup | Completed |
+| Method extraction investigation | Completed |
+| Array descriptor correction | Experimentally evaluated |
+| Method matching diagnostics | Partially reproduced |
+| Controlled ablation study | Pending |
+| End-to-end PDFBox Case Study 2 reproduction | Pending |
+
+The results represent an ongoing partial reproduction. Further controlled experiments are required before drawing conclusions about the individual effects of the experimental changes.
 ## Workflow
 
 The diagram below summarizes the process I followed and the evidence I collected.
